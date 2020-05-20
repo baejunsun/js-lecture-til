@@ -11,22 +11,19 @@
 // console.log(remove(arr, 10)); // [1, 3, 1, 2]
 
 class Remove {
-  constructor(array, item){
+  constructor(array){
     this.array = array;
-    this.item = item;
   }
-  remove() {
+  remove(item) {
     const index = this.array.indexOf(item);
-    if (this.index !== -1)
+    if (index !== -1)
       this.array.splice(index, 1);
-      return array;
+      return this.array;
   }
 }
 
-const arr = new Remove();
+const arr = new Remove([1,2,3,1,2,]);
 
-const result = arr.remove([1,2,3,1,2,], 2)
+console.log(arr.remove(2))
 
-console.log(result);
 
-console.log(arr);
