@@ -22,7 +22,7 @@ class Remove {
   }
 }
 
-const arr = new Remove([1,2,3,1,2,]);
+const arr = new Remove([1,2,3,1,2]);
 
 console.log(arr.remove(2))
 
