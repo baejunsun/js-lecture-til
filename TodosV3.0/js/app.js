@@ -106,7 +106,6 @@ $nav.onclick = ({target}) => {
   if ($active === target) return;
   $active.classList.remove('active');
   target.classList.add('active');
-  navState = target.id;
-  console.log(navState);
+  $navState.textContent = target.id;
   render();
 };
