@@ -7,14 +7,13 @@ const $completedTodos = document.querySelector('.completed-todos');
 const $activeTodos = document.querySelector('.active-todos');
 const $clearCompleted = document.querySelector('.clear-completed > .btn');
 const $nav = document.querySelector('.nav');
-const $navState = document.querySelector('.nav-state');
 
 // todos.를 전역에서 선언한 이유 : 쓰게될 모든 함수들이 todos를 의지한다.
 
 let todos = [];
 let active = [];
 let completed = [];
-let navState ='';
+let navState ='all';
 
 const getTodos = () => {
   todos = [];
@@ -48,13 +47,13 @@ const clearCompleted = () => {
 
 const render = () => {
   let html = '';
-  if ($navState.textContent === 'active') {
+  if (navState === 'active') {
     active = todos.filter(todo => !todo.completed);
   }
-  if ($navState.textContent === 'completed') {
+  if (navState === 'completed') {
     completed = todos.filter(todo => todo.completed);
   }
-  ($navState.textContent === 'all' ? todos : ($navState.textContent === 'active' ? active : completed)).forEach(todo => {
+  (navState === 'all' ? todos : (navState === 'active' ? active : completed)).forEach(todo => {
     html +=
     `<li id = "${todo.id}" class = "todo-item">
     <input id = "ck-${todo.id} class="checkbox" type="checkbox" ${todo.completed ? 'checked' : ''}>
@@ -106,6 +105,6 @@ $nav.onclick = ({target}) => {
   if ($active === target) return;
   $active.classList.remove('active');
   target.classList.add('active');
-  $navState.textContent = target.id;
+  navState = target.id;
   render();
 };
